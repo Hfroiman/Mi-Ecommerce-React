@@ -1,0 +1,10 @@
+.body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #ceddec;
+    min-height: 50vh;
+    box-sizing: border-box;/* para que el padding no exceda el vh */
+    padding-bottom: 2rem;
+}

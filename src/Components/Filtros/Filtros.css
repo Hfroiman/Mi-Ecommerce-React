@@ -1,0 +1,72 @@
+/* Contenedor de dropdowns */
+.dropdowns {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    background-color: #909090;
+}
+
+/* Dropdown base */
+.dropdown {
+    position: relative;
+    margin: 10px 0;
+}
+
+/* Botón */
+.dropdown-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Contenido oculto del dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Opciones del menú */
+.dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Mostrar el menú al pasar el mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-link {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.dropdown-link:hover {
+    background-color: #f1f1f1;
+}

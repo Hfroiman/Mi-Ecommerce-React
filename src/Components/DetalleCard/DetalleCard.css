@@ -1,0 +1,91 @@
+/* Contenedor general del detalle */
+.detalle-producto {
+    display: flex;
+    gap: 30px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 900px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Imagen grande a la izquierda */
+.detalle-imagen img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Sección de info a la derecha */
+.detalle-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.detalle-info .titulo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.detalle-info .descripcion {
+    font-size: 1rem;
+    color: #555;
+}
+
+.detalle-info .precio {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.detalle-info .stock {
+    color: #6c757d;
+}
+
+/* Selector de cantidad */
+.cantidad-selector {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.cantidad-selector button {
+    padding: 6px 12px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cantidad-selector button:hover {
+    background-color: #0056b3;
+}
+
+/* Botón principal */
+.btn-carrito {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+}
+
+.btn-carrito:hover {
+    background-color: #218838;
+}

@@ -1,0 +1,34 @@
+/* Botonera contenedora */
+.botonera {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+/* Botones de categoría */
+.botonera button {
+    padding: 10px 20px;
+    background-color: #e9ecef;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Hover y activo */
+.botonera button:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.botonera button:active {
+    transform: scale(0.98);
+}
+
+.botonera a {
+    text-decoration: none;
+    color: inherit; /* Opcional: hace que el texto tome el color del botón */
+}

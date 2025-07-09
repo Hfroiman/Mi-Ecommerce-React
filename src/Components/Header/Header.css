@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 7rem;
+    border-bottom: 5px solid #0056b3;
+
+    /* blanco o color claro */
+    background-color: #dbdbdb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.logo-sesion{
+    margin-right: 15px;
+    max-width: 40px;
+}
