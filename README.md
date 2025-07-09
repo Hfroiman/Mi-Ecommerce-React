@@ -1,12 +1,23 @@
-# React + Vite
+# Mi Proyecto ReactAplicación de tienda online desarrollada con React. Permite navegar productos por categoría o individualmente mediante rutas dinámicas con React Router. Cuenta con un diseño de layout fijo con header, navegación y acceso rápido al carrito.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Incluye funcionalidades como:
 
-Currently, two official plugins are available:
+🛒 Carrito persistente usando sessionStorage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🧮 Resumen con total de productos y monto total.
 
-## Expanding the ESLint configuration
+❌ Eliminar productos del carrito.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📊 Filtros de ordenamiento (precio, nombre).
+
+📥 Formulario de compra con validaciones básicas.
+
+✔️ Confirmación de compra exitosa.
+
+🖼️ Imágenes individuales por producto.
+
+🔄 Código modular con componentes reutilizables.
+
+🔥 Integración con Firebase (base de datos).
+
+🚀 Deploy en Vercel con URL pública.
