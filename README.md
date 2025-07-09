@@ -1,4 +1,4 @@
-# Mi Proyecto ReactAplicación de tienda online desarrollada con React. Permite navegar productos por categoría o individualmente mediante rutas dinámicas con React Router. Cuenta con un diseño de layout fijo con header, navegación y acceso rápido al carrito.
+# Mi Proyecto ReactAplicación de tienda online desarrollada con ReactJS (https://mi-ecommerce-react.vercel.app/). Permite navegar productos por categoría o individualmente mediante rutas dinámicas con React Router. Cuenta con un diseño de layout fijo con header, navegación y acceso rápido al carrito.
 
 Incluye funcionalidades como:
 
