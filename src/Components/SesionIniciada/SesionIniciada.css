@@ -1,0 +1,19 @@
+.bienvenida {
+  padding: 30px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.bienvenida button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.bienvenida button:hover {
+  background-color: #45a049;
+}

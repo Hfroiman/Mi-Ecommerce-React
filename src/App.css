@@ -1,3 +1,15 @@
-.main{
+html, body {
+    height: 100%;
+    margin: 0;
     background-color: #ceddec;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* Empuja el footer hacia abajo si el contenido es corto */
 }

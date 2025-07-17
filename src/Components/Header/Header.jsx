@@ -1,15 +1,14 @@
+import "./Header.css"
 import Titulo from "../Titulo/Titulo"
 import Botonera from "../Botonera/Botonera"
-import InicioSesion from "../InicioSesion/InicioSesion"
-import { Link } from "react-router-dom"
-import "./Header.css"
 import BotonCarrito from "../BotonCarrito/BotonCarrito"
+import BotonInicioSesion from "../BotonInicioSesion/BotonInicioSesion"
 
 
 const Header = () => {
   return (
     <header className="header">
-      <InicioSesion/>
+      <BotonInicioSesion/>
       <Titulo/>
       <Botonera/>
       <BotonCarrito/>

@@ -1,41 +1,72 @@
 import "./FormularioCompra.css"
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CarritoContext } from "../Carrito/CarritoContext";
+import Swal from "sweetalert2";
+
 
 const FormularioCompra = () => {
-    const Confirmar = (e) => {
-        e.preventDefault();
-        const DatosCte = {
-            Nombre: nombre.value,
-            Apellido: apellido.value,
-            Dni: dni.value,
-            Telefono: telefono.value,
-            Direccion: direccion.value,
-            Selecionado: tipoEntrega.value,
-            obs: observaciones.value,
+    const navigate = useNavigate();
+    const [usuario, setUsuario] = useState(null);
+    const { VaciarCarrito } = useContext(CarritoContext);
+
+    useEffect(() => {
+        const userok = JSON.parse(sessionStorage.getItem("Sesion"));
+        if (userok != null) {
+            setUsuario(userok);
+        }
+    }, [])
+
+    const Cargadatos = () => {
+        debugger
+        if(usuario != null){
+            nombre.value = usuario.nombre;
+            apellido.value = usuario.apellido;
+            dni.value = usuario.dni;
+            telefono.value = usuario.telefono;
+        }else{
+            Swal.fire("Debes iniciar sesion primero.");
         }
 
-        MostrarMsj(DatosCte);
-
-        nombre.value="";
-        apellido.value="";
-        telefono.value="";
-        dni.value="";
-        direccion.value="";
-        tipoEntrega.value="";
-        observaciones.value="";
-
-        sessionStorage.clear("carrito");
-        sessionStorage.clear();
     }
 
-    const MostrarMsj = (obj) =>{
-        alert("Compra exitosa: "+ obj.Apellido + " " + obj.Nombre +", DNI:"+ obj.Dni)
+    const Confirmar = (e) => {
+        e.preventDefault();
+
+        const DatosCte = {
+            Nombre: nombre.value.trim(),
+            Apellido: apellido.value.trim(),
+            Dni: dni.value.trim(),
+            Telefono: telefono.value.trim(),
+            Direccion: direccion.value.trim(),
+            Seleccionado: tipoEntrega.value,
+            obs: observaciones.value.trim(),
+        };
+
+        MostrarMsj(DatosCte);
+        Cancelar();
+    }
+
+    const Borrardatos = () => {
+        [nombre, apellido, dni, telefono, direccion, tipoEntrega, observaciones].forEach((campo) => (campo.value = ""));
+    }
+    const MostrarMsj = (obj) => {
+        Swal.fire("Compra realizada con exito");
+    }
+
+    const Cancelar = () => {
+        Borrardatos();
+        VaciarCarrito();
+        sessionStorage.clear("Sesion");
+        navigate("/InicioSesion");
     }
 
     return (
         <div className="formulario-compra">
             <h2>Confirmar compra</h2>
 
-            <form onSubmit={ Confirmar }>
+            <form onSubmit={Confirmar}>
                 <div className="grupo-input">
                     <label htmlFor="nombre">Nombre</label>
                     <input type="text" id="nombre" name="nombre" required></input>
@@ -67,16 +98,18 @@ const FormularioCompra = () => {
 
                 <div className="grupo-input">
                     <label htmlFor="direccion">Dirección</label>
-                    <input type="text" id="direccion" name="direccion"></input>
+                    <input type="text" id="direccion" name="direccion" required></input>
                 </div>
 
                 <div className="grupo-input">
                     <label htmlFor="observaciones">Observaciones</label>
-                    <textarea id="observaciones" name="observaciones" rows="3" placeholder="Indicar detalles adicionales..."></textarea>
+                    <textarea id="observaciones" name="observaciones" rows="3" placeholder="Indicar detalles adicionales..." required></textarea>
                 </div>
 
                 <button type="submit" className="btn-confirmar" >Confirmar compra</button>
             </form>
+            <button type="submit" className="btn-cargardatos" id="cargar" onClick={Cargadatos}> Cargar datos de la sesion</button>
+            <button type="submit" className="btn-Cancelar" id="cargar" onClick={Cancelar}> Cancelar Compra </button>
         </div>
     )
 }

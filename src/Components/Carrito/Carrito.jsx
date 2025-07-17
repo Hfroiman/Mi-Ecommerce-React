@@ -1,5 +1,5 @@
 import "./Carrito.css"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { CarritoContext } from "./CarritoContext"
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,7 @@ const Carrito = () => {
     const { carrito, total, totalProductos, Sumar, Restar, VaciarCarrito, EliminarProducto } = useContext(CarritoContext);
 
     const ConfirmarCompra = () => {
-        navigate('/ConfirmarCompra');
+        carrito.length!=0 ? (navigate('/ConfirmarCompra')):(navigate('/'))
     }
 
     return (
@@ -38,12 +38,11 @@ const Carrito = () => {
                 ))
             )
             }
-
             <div className="resumen-carrito2">
                 <p>Total de productos: <span>{totalProductos}</span></p>
                 <p>Precio total: <span>${total}</span></p>
                 <div className="btnes-carrito">
-                    <button className="btn-carrito2" onClick={ ConfirmarCompra }>CONFIRMAR COMPRA</button>
+                    <button className="btn-carrito2" onClick={ConfirmarCompra}>CONFIRMAR COMPRA</button>
                     <button className="btn-carrito3" onClick={() => VaciarCarrito()}>CANCELAR COMPRA</button>
                 </div>
             </div>

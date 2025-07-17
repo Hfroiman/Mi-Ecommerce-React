@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { collection, query, getDocs, where} from "firebase/firestore";
 import { db } from "../appConfig/AppConfig";
 import { CarritoContext } from "../Carrito/CarritoContext";
+import Spinner from "../Spinner/Spinner";
 
 const DetalleCard = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const DetalleCard = () => {
   const { agregarProducto, carrito } = useContext(CarritoContext);
   
   useEffect(() => {
-    const misproductos = query(collection(db, "Ecommerce"),where("id", "==", ""+ prseleccionado.id +""));
+    const misproductos = query(collection(db, "Ecommerce"),where("id", "==", prseleccionado.id));
     
     getDocs(misproductos).then((respuesta) => {
       if (!respuesta.empty) {
@@ -37,7 +38,6 @@ const DetalleCard = () => {
       setContador(contador-1);
     }
   }
-
   const AgregarCarrito = () => {
     const item = producto;
     const cantidad = contador;
@@ -49,7 +49,7 @@ const DetalleCard = () => {
     navigate('/carrito');
   }
   
-  if (!producto) return <p>Cargando...</p>;
+  if (!producto) return <Spinner/>;
   return (
     <div className="detalle-producto">
       <div className="detalle-imagen">

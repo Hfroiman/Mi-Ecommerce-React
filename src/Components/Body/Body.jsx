@@ -1,13 +1,14 @@
 import "./Body.css"
-import { collection, query, getDocs, orderBy, where } from "firebase/firestore"
+import { collection, query, getDocs, orderBy } from "firebase/firestore"
 import { db } from "../appConfig/AppConfig"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Card from "../Card/Card"
 import Filtros from "../Filtros/Filtros"
+import Spinner from "../Spinner/Spinner";
 
 const Body = () => {
-   const [productos, setProductos] = useState ([]);
+   const [productos, setProductos] = useState (null);
    let parametros = useParams();
    
    useEffect(()=>{
@@ -24,6 +25,8 @@ const Body = () => {
       setProductos(respuesta.docs.map(doc => ({id:doc.id, ...doc.data()})))
     })
    },[parametros])
+
+    if (!productos) return <Spinner/>;
   return (
     <div>
       <Filtros/>
