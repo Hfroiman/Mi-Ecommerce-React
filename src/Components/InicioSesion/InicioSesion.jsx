@@ -50,11 +50,17 @@ const InicioSesion = () => {
   }
 
   const ControlInicioSesion = () => {
-    const Usuario = usuario.value;
-    const Password = password.value;
-    if (DatosCorrectos(Password, Usuario)) {
-      Msjcorrecto();
-      navigate('/');
+    try{
+
+      const Usuario = usuario.value;
+      const Password = password.value;
+      if (DatosCorrectos(Password, Usuario)) {
+        Msjcorrecto();
+        navigate('/');
+      }
+    }
+    catch(e){
+      console.error(e);
     }
   }
 
