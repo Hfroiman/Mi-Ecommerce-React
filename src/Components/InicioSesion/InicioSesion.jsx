@@ -51,12 +51,16 @@ const InicioSesion = () => {
 
   const ControlInicioSesion = () => {
     try{
-
-      const Usuario = usuario.value;
-      const Password = password.value;
-      if (DatosCorrectos(Password, Usuario)) {
-        Msjcorrecto();
-        navigate('/');
+        const Usuario = usuario.value;
+        const Password = password.value;
+        if (DatosCorrectos(Password, Usuario)) {
+          Msjcorrecto();
+          navigate('/');
+      }
+      else{
+        usuario.value = "";
+        password.value = "";
+        return
       }
     }
     catch(e){

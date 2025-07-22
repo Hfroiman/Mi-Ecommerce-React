@@ -1,14 +1,21 @@
 import "./Card.css"
 import { NavLink } from "react-router-dom"
 import { CarritoContext } from "../Carrito/CarritoContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ obj }) => {
     const Min = 1;
     const [yacargado, setYacargado] = useState(false);
-    const { agregarProducto } = useContext(CarritoContext);
+    const { carrito,agregarProducto } = useContext(CarritoContext);
     const navigate = useNavigate();
+
+    useEffect(()=>{
+        const PrAgregado = carrito.find((pr)=> pr.item.id == obj.id);
+        if(PrAgregado){
+            setYacargado(true);
+        }
+    },[]);
 
     const AgregarCarrito = () => {
         const item = obj;
