@@ -3,6 +3,7 @@ import { db } from "../appConfig/AppConfig";
 import { collection, setDoc, query, getDocs, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const FormularioPersonal = () => {
     const navigate = useNavigate();
@@ -34,7 +35,9 @@ const FormularioPersonal = () => {
             const iD = Cte.Dni;
             const docReferencia = doc(db, "Usuarios", iD);
             setDoc(docReferencia, Cte);
+            Msjcorrecto();
             BorrarDatos();
+            navigate("/InicioSesion");
         }
     }
 
@@ -43,11 +46,11 @@ const FormularioPersonal = () => {
             const DNIexistente = usuarios.find(pr => pr.dni === cte.Dni);
             const Userexistente = usuarios.find(pr => pr.usuario === cte.Usuario);
             if (DNIexistente) {
-                /* ESCRIBIR UN MSJ DE PORQUE NO SE GUARDO EL USUARIO */
+                Msjerror("Dni ingresado, ya posee un usuario.");
                 return false;
             }
             if (Userexistente) {
-                /* ESCRIBIR UN MSJ DE PORQUE NO SE GUARDO EL USUARIO */
+                Msjerror("El Usuario ingresado ya posee una cuenta.");
                 return false;
             }
             return true;
@@ -56,15 +59,40 @@ const FormularioPersonal = () => {
             return false;
         }
     };
+
     const BorrarDatos = () => {
-        nombre.value="";
-        apellido.value="";
-        dni.value="";
-        telefono.value="";
-        email.value="";
-        usuario.value="";
-        contraseña.value="";
+        nombre.value = "";
+        apellido.value = "";
+        dni.value = "";
+        telefono.value = "";
+        email.value = "";
+        usuario.value = "";
+        contraseña.value = "";
     }
+
+    const Msjcorrecto = () => {
+        return Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "HAS GENERADO CORRECTAMENTE UN USUARIO",
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar",
+            timer: 2500,
+            timerProgressBar: true
+        });
+    };
+
+    const Msjerror = (msj) => {
+        return Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Error: " + msj,
+            showConfirmButton: true,
+            confirmButtonText: "Aceptar",
+            timer: 2000,
+            timerProgressBar: true
+        });
+    };
 
     return (
         <div className="formulario-personal">
@@ -108,7 +136,7 @@ const FormularioPersonal = () => {
 
                 <button type="submit" className="btn-confirmar" > Confirmar </button>
             </form>
-                <button type="button" className="btn-cancelar" onClick={()=>(navigate('/InicioSesion'))}> Cancelar </button>
+            <button type="button" className="btn-cancelar" onClick={() => (navigate('/InicioSesion'))}> Cancelar </button>
         </div>
     )
 }
