@@ -85,11 +85,11 @@ const FormularioPersonal = () => {
     const Msjerror = (msj) => {
         return Swal.fire({
             position: "center",
-            icon: "success",
-            title: "Error: " + msj,
+            icon: "error",
+            title: "Oops..." + msj,
             showConfirmButton: true,
             confirmButtonText: "Aceptar",
-            timer: 2000,
+            timer: 2500,
             timerProgressBar: true
         });
     };
