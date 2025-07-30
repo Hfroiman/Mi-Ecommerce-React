@@ -11,6 +11,9 @@ import FormularioCompra from "./Components/FormularioCompra/FormularioCompra"
 import InicioSesion from "./Components/InicioSesion/InicioSesion"
 import FormularioPersonal from "./Components/FormularioPersonal/FormularioPersonal"
 import SesionIniciada from "./Components/SesionIniciada/SesionIniciada"
+import RecuperarUsuario from "./Components/RecuperarUsuario/RecuperarUsuario"
+import MostrarContraseña from "./Components/RecuperarContraseña/MostrarContraseña"
+import RecuperarContraseña from "./Components/RecuperarContraseña/RecuperarContraseña"
 
 export const App = () => {
   return (
@@ -27,6 +30,8 @@ export const App = () => {
               <Route path="/Carrito" element={<Carrito />} />
               <Route path="/InicioSesion" element={<InicioSesion />} />
               <Route path="/SesionIniciada" element={<SesionIniciada />} />
+              <Route path="/RecuperarContraseña" element={<MostrarContraseña />} />
+              <Route path="/RecuperarUsuario" element={<RecuperarUsuario />} />
               <Route path="/ConfirmarCompra" element={<FormularioCompra />} />
               <Route path="/FormularioPersonal" element={<FormularioPersonal />} />
               <Route path="*" element={<h2>Ruta no encontrada</h2>} />

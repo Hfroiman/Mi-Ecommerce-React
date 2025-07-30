@@ -18,7 +18,6 @@ const DetalleCard = () => {
 
   useEffect(() => {
     const misproductos = query(collection(db, "Ecommerce"), where("id", "==", prseleccionado.id));
-
     getDocs(misproductos).then((respuesta) => {
       if (!respuesta.empty) {
         setProducto({ id: respuesta.docs[0].id, ...respuesta.docs[0].data() });

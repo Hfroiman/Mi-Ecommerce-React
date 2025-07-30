@@ -2,7 +2,7 @@ import "./InicioSesion.css";
 import { useEffect, useState } from "react";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../appConfig/AppConfig";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const InicioSesion = () => {
@@ -17,13 +17,13 @@ const InicioSesion = () => {
     else {
       const UsuariosDisponibles = query(collection(db, "Usuarios"));
       getDocs(UsuariosDisponibles)
-      .then(respuesta => {
-        if (!respuesta.empty) {
-          setUsuarios(respuesta.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-        }
-      });
+        .then(respuesta => {
+          if (!respuesta.empty) {
+            setUsuarios(respuesta.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+          }
+        });
     }
-  },[])
+  }, [])
 
   const Msjcorrecto = () => {
     return Swal.fire({
@@ -50,35 +50,49 @@ const InicioSesion = () => {
   }
 
   const ControlInicioSesion = () => {
-    try{
-        const Usuario = usuario.value;
-        const Password = password.value;
-        if (DatosCorrectos(Password, Usuario)) {
-          Msjcorrecto();
-          navigate('/');
+    try {
+      debugger
+      const Usuario = usuario.value;
+      const Password = password.value;
+      if (DatosCorrectos(Password, Usuario)) {
+        Msjcorrecto();
+        navigate('/');
       }
-      else{
+      else {
         usuario.value = "";
         password.value = "";
         return
       }
     }
-    catch(e){
+    catch (e) {
       console.error(e);
     }
   }
 
   const DatosCorrectos = (pas, us) => {
     const usuariocorrecto = usuarios.find(pr => pr.usuario === us && pr.contraseña === pas);
+    debugger
+    if (usuariocorrecto == undefined) {
+      Msjincorrecto();
+      return false;
+    }
+    const user = { ...usuariocorrecto };
+    const enjson = JSON.stringify(user);
+    sessionStorage.setItem("Sesion", enjson);
+    return true;
+  }
+  /* FORMA VIEJA
+    const DatosCorrectos = (pas, us) => {
+    const usuariocorrecto = usuarios.find(pr => pr.usuario === us && pr.contraseña === pas);
     if (usuariocorrecto) {
       const user = { ...usuariocorrecto };
       const enjson = JSON.stringify(user);
       sessionStorage.setItem("Sesion", enjson);
       return true;
-    }
-    Msjincorrecto();
-    return false;
-  }
+      }
+      Msjincorrecto();
+      return false;
+  }*/
 
   return (
     <div className="login-form">
@@ -95,8 +109,8 @@ const InicioSesion = () => {
         </div>
 
         <div className="form-links">
-          <a href="#">¿Olvidaste tu contraseña?</a>
-          <a href="#">¿Olvidaste tu usuario?</a>
+          <Link to="/RecuperarContraseña">¿Olvidaste tu contraseña?</Link>
+          <Link to="/RecuperarUsuario">¿Olvidaste tu usuario?</Link>
         </div>
 
         <button type="submit" className="btn-login">Ingresar</button>
