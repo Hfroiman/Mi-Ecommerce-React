@@ -19,12 +19,11 @@ const FormularioCompra = () => {
     }, [])
 
     const Cargadatos = () => {
-        debugger
         if(usuario != null){
-            nombre.value = usuario.nombre;
-            apellido.value = usuario.apellido;
-            dni.value = usuario.dni;
-            telefono.value = usuario.telefono;
+            nombre.value = usuario.Nombre;
+            apellido.value = usuario.Apellido;
+            dni.value = usuario.Dni;
+            telefono.value = usuario.Telefono;
         }else{
             Swal.fire("Debes iniciar sesion primero.");
         }

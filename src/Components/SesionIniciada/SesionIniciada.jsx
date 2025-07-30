@@ -17,9 +17,9 @@ const SesionIniciada = () => {
     }
     return (
         <div className="bienvenida">
-            <h2>👋 Bienvenido/a, {usuarioActivo.usuario}</h2>
-            <p>DNI: {usuarioActivo.dni}</p>
-            <p>Email: {usuarioActivo.email}</p>
+            <h2>👋 Bienvenido/a, {usuarioActivo.Usuario}</h2>
+            <p>DNI: {usuarioActivo.Dni}</p>
+            <p>Email: {usuarioActivo.Email}</p>
             {/* Agregá más campos si querés mostrar otros datos */}
 
             <div style={{ marginTop: "20px" }}>

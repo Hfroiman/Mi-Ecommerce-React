@@ -51,7 +51,6 @@ const InicioSesion = () => {
 
   const ControlInicioSesion = () => {
     try {
-      debugger
       const Usuario = usuario.value;
       const Password = password.value;
       if (DatosCorrectos(Password, Usuario)) {
@@ -70,8 +69,7 @@ const InicioSesion = () => {
   }
 
   const DatosCorrectos = (pas, us) => {
-    const usuariocorrecto = usuarios.find(pr => pr.usuario === us && pr.contraseña === pas);
-    debugger
+    const usuariocorrecto = usuarios.find(pr => pr.Usuario === us && pr.Contraseña === pas);
     if (usuariocorrecto == undefined) {
       Msjincorrecto();
       return false;
@@ -81,18 +79,6 @@ const InicioSesion = () => {
     sessionStorage.setItem("Sesion", enjson);
     return true;
   }
-  /* FORMA VIEJA
-    const DatosCorrectos = (pas, us) => {
-    const usuariocorrecto = usuarios.find(pr => pr.usuario === us && pr.contraseña === pas);
-    if (usuariocorrecto) {
-      const user = { ...usuariocorrecto };
-      const enjson = JSON.stringify(user);
-      sessionStorage.setItem("Sesion", enjson);
-      return true;
-      }
-      Msjincorrecto();
-      return false;
-  }*/
 
   return (
     <div className="login-form">
