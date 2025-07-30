@@ -44,7 +44,7 @@ const InicioSesion = () => {
       text: "Los datos son incorrectos!",
       showConfirmButton: true,
       confirmButtonText: "OK",
-      timer: 2500,
+      timer: 3500,
       timerProgressBar: true
     });
   }
