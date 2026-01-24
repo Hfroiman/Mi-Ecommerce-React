@@ -5,7 +5,7 @@ const BotonInicioSesion = () => {
   return (
     <div>
       <Link to="/InicioSesion">
-        <img className="logo-sesion" src="../public/img/logo.png" alt="LogoSesion"></img>
+        <img className="logo-sesion" src="../img/inicioSesion.png" alt="LogoSesion"></img>
       </Link>
     </div>
   )
