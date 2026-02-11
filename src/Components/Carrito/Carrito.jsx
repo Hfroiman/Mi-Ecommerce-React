@@ -11,6 +11,11 @@ const Carrito = () => {
         carrito.length!=0 ? (navigate('/ConfirmarCompra')):(navigate('/'))
     }
 
+    const CancelarCompra = () =>{
+        VaciarCarrito();
+        navigate('/');
+    }
+
     return (
         <div className="carrito2">
             <h2>Carrito de compras</h2>
@@ -43,7 +48,7 @@ const Carrito = () => {
                 <p>Precio total: <span>${total}</span></p>
                 <div className="btnes-carrito">
                     <button className="btn-carrito2" onClick={ConfirmarCompra}>CONFIRMAR COMPRA</button>
-                    <button className="btn-carrito3" onClick={() => VaciarCarrito()}>CANCELAR COMPRA</button>
+                    <button className="btn-carrito3" onClick={CancelarCompra}>CANCELAR COMPRA</button>
                 </div>
             </div>
         </div>

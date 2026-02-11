@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const BotonInicioSesion = () => {
   return (
-    <div>
+    <div className="btn-inicio-sesion">
       <Link to="/InicioSesion">
         <img className="logo-sesion" src="../img/inicioSesion.png" alt="LogoSesion"></img>
       </Link>
